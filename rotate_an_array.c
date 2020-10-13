@@ -1,16 +1,23 @@
 #include<stdio.h>
+#define max 30
 int main()
 {
-    int a[7]={3,4,5,2,1,8,9};
-    int i;int k=3;
-    int b[k];
-    for(i=0;i<7;i++)
+    int a[max],k[max];
+    int N,i,r,j=0;
+    scanf("%d",&N);
+    for(i=0;i<N;i++)
+        scanf("%d",&a[i]);
+    printf("Enter the rotating number:");
+    scanf("%d",&r);
+    for(i=0;i<N;i++)
     {
-        if(i<k)
-            b[i]=a[i];
-        if((i+k)<7) a[i]=a[(i+k)];
-        else a[i]=b[i-(7-k)];
+        if(i<r)
+            k[i]=a[i];
+        if(i+r<N)
+        a[i]=a[i+r];
+        else
+            a[i]=k[j++];
     }
-    for(i=0;i<7;i++)
+    for(i=0;i<N;i++)
         printf("%d ",a[i]);
 }

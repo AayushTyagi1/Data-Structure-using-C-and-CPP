@@ -10,7 +10,7 @@ void leftView(node *root)
 {
     if (root == NULL)
         return;
-    // queue<pair<node *, int>> q;
+    queue<pair<node *, int>> q;
     int l = 0;
     queue<node *> q;
     q.push(root);
@@ -119,17 +119,6 @@ node *insert(int data)
 }
 int main()
 {
-    // node *root = NULL;
-
-    // int n;
-    // cin >> n;
-
-    // while (n--)
-    // {
-    //     int key;
-    //     cin >> key;
-    //     insert(&root, key);
-    // }
     node *root = insert(1);
     root->left = insert(2);
     root->right = insert(3);

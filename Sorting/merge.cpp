@@ -15,7 +15,7 @@ int Merge(int A[],int p, int q,int r)
         R[j]=A[q+j+1];
     }
     i=0,j=0;
-    for(k=p;i<n1&&j<n2;k++)
+    for(k=p;k<n1&&k<n2;k++)
     {
         if(L[i]<R[j])
         {

@@ -88,8 +88,8 @@ node *insert(int data)
 }
 int main()
 {
-    // node *root = NULL;
 
+    // node *root = NULL;
     // int n;
     // cin >> n;
 
@@ -107,4 +107,3 @@ int main()
     bfs(root);
     return 0;
 }
-//left right front back

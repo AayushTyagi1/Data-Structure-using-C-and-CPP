@@ -16,6 +16,10 @@
         "xlocale": "cpp",
         "initializer_list": "cpp",
         "type_traits": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "algorithm": "cpp",
+        "limits": "cpp",
+        "cstdlib": "cpp",
+        "bitset": "cpp"
     }
 }

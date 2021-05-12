@@ -17,11 +17,7 @@ vector<vector<int>> threeSum(vector<int> &nums)
             {
                 if (nums[j] + nums[k] == sum)
                 {
-                    vector<int> temp;
-                    temp.push_back(nums[i]);
-                    temp.push_back(nums[j]);
-                    temp.push_back(nums[k]);
-                    ans.push_back(temp);
+                    ans.push_back({nums[i],nums[j],nums[k]});
 
                     while (j < k && nums[j] == nums[j + 1])
                         j++;

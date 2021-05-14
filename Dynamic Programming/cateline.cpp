@@ -11,7 +11,7 @@ long long catalan(int n)
         catalan[i] = 0;
         for (int j = 0; j < i; j++)
         {
-            res += catalan(i) * catalan(n - i - 1);
+            catalan[i] += catalan(i) * catalan(n - i - 1);
         }
     }
 

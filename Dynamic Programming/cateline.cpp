@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-long long catalan(int n)
+long long cat(int n)
 {
     long long catalan[n + 1];
     catalan[0] = 1;
@@ -11,7 +11,7 @@ long long catalan(int n)
         catalan[i] = 0;
         for (int j = 0; j < i; j++)
         {
-            catalan[i] += catalan(i) * catalan(n - i - 1);
+            catalan[i] += catalan[j] * catalan[i - j - 1];
         }
     }
 
@@ -22,6 +22,6 @@ int main()
 {
     int a;
     cin >> a;
-    cout << catalan(a);
+    cout << cat(a);
     return 0;
 }

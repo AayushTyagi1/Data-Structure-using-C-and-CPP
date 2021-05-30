@@ -21,6 +21,7 @@
         "limits": "cpp",
         "cstdlib": "cpp",
         "bitset": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "list": "cpp"
     }
 }

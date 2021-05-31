@@ -49,7 +49,54 @@ void levelOrder(node *root)
             q.push(t->right);
     }
 }
-
+void levelOrderLine(node *root)
+{
+    if (root == NULL)
+        return;
+    queue<node *> q;
+    q.push(root);
+    q.push(NULL);
+    while (q.size() > 1)
+    {
+        node *t = q.front();
+        q.pop();
+        if (t == NULL)
+        {
+            cout << "\n";
+            q.push(NULL);
+            continue;
+        }
+        cout << t->key << " ";
+        if (t->left)
+            q.push(t->left);
+        if (t->right)
+            q.push(t->right);
+    }
+}
+void levelOrderLine2(node *root)
+{
+    if (root == NULL)
+        return;
+    queue<node *> q;
+    q.push(root);
+    q.push(NULL);
+    while (!q.empty())
+    {
+        node *t = q.front();
+        q.pop();
+        if (t == NULL)
+        {
+            cout << "\n";
+            q.push(NULL);
+            continue;
+        }
+        cout << t->key << " ";
+        if (t->left)
+            q.push(t->left);
+        if (t->right)
+            q.push(t->right);
+    }
+}
 int main()
 {
     node *root = new node(10);
@@ -62,4 +109,8 @@ int main()
     kdistance(root, 2);
     cout << endl;
     levelOrder(root);
+    cout << endl;
+    levelOrderLine(root);
+    cout << endl;
+    levelOrderLine2(root);
 }

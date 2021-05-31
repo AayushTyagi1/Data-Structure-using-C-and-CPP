@@ -79,22 +79,20 @@ void levelOrderLine2(node *root)
         return;
     queue<node *> q;
     q.push(root);
-    q.push(NULL);
     while (!q.empty())
     {
-        node *t = q.front();
-        q.pop();
-        if (t == NULL)
+        int n = q.size();
+        for (int i = 0; i < n; i++)
         {
-            cout << "\n";
-            q.push(NULL);
-            continue;
+            node *t = q.front();
+            q.pop();
+            cout << t->key << " ";
+            if (t->left)
+                q.push(t->left);
+            if (t->right)
+                q.push(t->right);
         }
-        cout << t->key << " ";
-        if (t->left)
-            q.push(t->left);
-        if (t->right)
-            q.push(t->right);
+        cout << endl;
     }
 }
 int main()

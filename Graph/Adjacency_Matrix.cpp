@@ -25,8 +25,7 @@ Graph *adjMatrixOfGraph()
         G->Adj[i] = (int *)malloc(sizeof(int) * G->V);
     for (int i = 0; i < (G->V); i++)
     {
-        for (int j = 0; j < (G->V); j++)
-            G->Adj[i][j] = 0;
+        G->Adj[i][j] = 0;
     }
 
     for (int i = 0; i < G->E; i++)

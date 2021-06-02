@@ -1,20 +1,41 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 struct node
 {
-    int key;
+    int val;
     node *left;
     node *right;
     node(int k)
     {
-        key = k;
+        val = k;
         left = NULL;
         right = NULL;
     }
 };
 
-void leftview(node *root)
+void Botview(node *root)
 {
+    map<int, int> m;
+    if (root == NULL)
+        return;
+    queue<pair<node *, int>> q;
+    q.push({root, 0});
+    while (!q.empty())
+    {
+        node *t = q.front().first;
+        int h = q.front().second;
+        m[h] = t->val;
+        q.pop();
+        if (t->left)
+        {
+            q.push({t->left, h - 1});
+        }
+
+        if (t->right)
+            q.push({t->right, h + 1});
+    }
+    for (auto x : m)
+        cout << x.second << " ";
 }
 int main()
 {
@@ -30,6 +51,6 @@ int main()
     root->right->right->right->left->right = new node(10);
     root->right->right->right->left->right->left = new node(11);
     cout << endl
-         << "LEFT VIEW: ";
-    BotView(root);
+         << "Bottom VIEW: ";
+    Botview(root);
 }

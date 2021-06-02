@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 struct node
 {
@@ -12,9 +12,25 @@ struct node
         right = NULL;
     }
 };
-
+void createview(node *root, map<int, int> &h, int level = 0)
+{
+    if (h.find(level) == h.end())
+    {
+        h.insert({level, root->key});
+    }
+    if (root->left)
+        createview(root->left, h, level - 1);
+    if (root->right)
+        createview(root->right, h, level + 1);
+}
 void topview(node *root)
 {
+    map<int, int> h;
+    createview(root, h);
+    for (auto i : h)
+    {
+        cout << i.second << " ";
+    }
 }
 int main()
 {
@@ -31,5 +47,5 @@ int main()
     root->right->right->right->left->right->left = new node(11);
     cout << endl
          << "Top VIEW: ";
-    topView(root);
+    topview(root);
 }

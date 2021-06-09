@@ -24,6 +24,23 @@ bool search(Node *root, int n)
     else
         return search(root->left, n);
 }
+
+bool searchIt(Node *root, int n)
+{
+    if (root == NULL)
+        return false;
+    while (root)
+    {
+        if (root->val == key)
+            return true;
+        if (root->val < n)
+            root = root->right;
+        else
+            root = root->left;
+    }
+    return false;
+}
+
 int main()
 {
     Node *root = new Node(15);

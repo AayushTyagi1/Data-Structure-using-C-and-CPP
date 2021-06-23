@@ -4,6 +4,7 @@ using namespace std;
 
 int LCS(string s1, string s2, int m, int n)
 {
+
     int dp[m + 1][n + 1];
     for (int i = 0; i <= m; i++)
         dp[i][0] = 0;

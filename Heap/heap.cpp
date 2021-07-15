@@ -45,6 +45,20 @@ public:
             pos = (pos - 1) / 2;
         }
     }
+    void minHeapify(int i)
+    {
+        if (left(i) < size && arr[left(i)] < arr[i])
+        {
+            swap(arr[left(i)], arr[i]);
+            return minHeapify(left(i));
+        }
+        if (right(i) < size && arr[right(i)] < arr[i])
+        {
+            swap(arr[right(i)], arr[i]);
+            return minHeapify(right(i));
+        }
+        return;
+    }
 };
 int main()
 {

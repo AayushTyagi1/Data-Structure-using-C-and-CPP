@@ -16,7 +16,7 @@ public:
         arr[3] = 40;
         arr[4] = 50;
         arr[5] = 100;
-        arr[6] = 20;
+        arr[6] = 25;
         arr[7] = 45;
         capacity = c;
         size = 8;
@@ -59,11 +59,22 @@ public:
         }
         return;
     }
+    void minExtract()
+    {
+        swap(arr[0], arr[size - 1]);
+        size--;
+        arr[size] = 0;
+        minHeapify(0);
+    }
 };
 int main()
 {
     Heap obj(20);
     obj.display();
     obj.insert(12);
+    obj.display();
+    obj.minExtract();
+    obj.display();
+    obj.minExtract();
     obj.display();
 }

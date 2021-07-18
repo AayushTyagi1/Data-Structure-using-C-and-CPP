@@ -77,6 +77,11 @@ public:
             i = parent(i);
         }
     }
+    void deleteKey(int k)
+    {
+        decreaseKey(k, INT_MIN);
+        minExtract();
+    }
 };
 int main()
 {
@@ -89,5 +94,7 @@ int main()
     cout << obj.minExtract() << endl;
     obj.display();
     obj.decreaseKey(5, 5);
+    obj.display();
+    obj.deleteKey(5);
     obj.display();
 }

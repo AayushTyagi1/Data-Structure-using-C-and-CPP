@@ -82,6 +82,13 @@ public:
         decreaseKey(k, INT_MIN);
         minExtract();
     }
+    void BuildHeap()
+    {
+        for (int i = (size - 2) / 2; i >= 0; i--) //Bottom most right most noed
+        {
+            minHeapify(i);
+        }
+    }
 };
 int main()
 {
@@ -97,4 +104,8 @@ int main()
     obj.display();
     obj.deleteKey(5);
     obj.display();
+    Heap obj2(20);
+    obj2.display();
+    obj2.BuildHeap();
+    obj2.display();
 }

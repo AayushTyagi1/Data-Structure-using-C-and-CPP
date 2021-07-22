@@ -59,12 +59,23 @@ public:
         }
         return;
     }
-    void minExtract()
+    int minExtract()
     {
+        if (size == 0)
+            return INT_MAX;
         swap(arr[0], arr[size - 1]);
         size--;
-        arr[size] = 0;
         minHeapify(0);
+        return arr[size];
+    }
+    void decreaseKey(int i, int x)
+    {
+        arr[i] = x;
+        while (i != 0 && arr[parent(i)] > arr[i])
+        {
+            swap(arr[parent(i)], arr[i]);
+            i = parent(i);
+        }
     }
 };
 int main()
@@ -73,8 +84,10 @@ int main()
     obj.display();
     obj.insert(12);
     obj.display();
-    obj.minExtract();
+    cout << obj.minExtract() << endl;
     obj.display();
-    obj.minExtract();
+    cout << obj.minExtract() << endl;
+    obj.display();
+    obj.decreaseKey(5, 5);
     obj.display();
 }

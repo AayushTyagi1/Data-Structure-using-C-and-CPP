@@ -1,6 +1,7 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include <climits>
 using namespace std;
+unordered_map<int, int> DP;
 //Recursion
 int steps(int x)
 {
@@ -39,7 +40,7 @@ int stepsBU(int x)
     int dp[x + 1];
     dp[2] = 1;
     dp[3] = 1;
-    for (int i = 4; i < x; i++)
+    for (int i = 4; i <= x; i++)
     {
         int a = INT_MAX, b = INT_MAX, c = INT_MAX;
         if (i % 2 == 0)
@@ -51,10 +52,21 @@ int stepsBU(int x)
     }
     return dp[x];
 }
+
+int stepsBest(int n)
+{
+    if (n <= 1)
+        return 0;
+    if (DP.count(n) == 0)
+        DP[n] = 1 + min(n % 2 + steps(n / 2), n % 3 + steps(n / 3));
+    return DP[n];
+}
 int main()
 {
-    cout << steps(50) << endl;
+    cout << steps(10) << endl;
     int dp[100] = {0};
-    cout << steps(50, dp) << endl;
-    cout << stepsBU(50);
+    cout << steps(70, dp) << endl;
+    cout << stepsBU(70);
+    cout << endl
+         << stepsBest(70);
 }

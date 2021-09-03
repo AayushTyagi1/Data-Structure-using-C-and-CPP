@@ -16,11 +16,28 @@ int ladder(int N, int K, int dp[])
     }
     return dp[N] = noofways;
 }
+int ladder(int n, int k)
+{
+    int dp[n + 1] = {0};
+    dp[0] = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        dp[i] = 0;
+        for (int j = 1; j <= k; j++)
+        {
+            if (i - j >= 0)
+            {
+                dp[i] += dp[i - j];
+            }
+        }
+    }
+    return dp[n];
+}
 int main()
 {
     int N, K;
     N = 4;
     K = 3;
     int dp[100] = {0};
-    cout << ladder(N, K, dp);
+    cout << ladder(N, K, dp) << " " << ladder(N, K);
 }

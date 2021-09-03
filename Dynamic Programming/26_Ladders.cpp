@@ -33,11 +33,24 @@ int ladder(int n, int k)
     }
     return dp[n];
 }
+int ladderO(int n, int k)
+{
+    int dp[n + 1] = {0};
+    dp[0] = dp[1] = 1;
+    for (int i = 2; i <= n; i++)
+    {
+        if (i <= k)
+            dp[i] = 2 * dp[i - 1];
+        else
+            dp[i] = 2 * dp[i - 1] - dp[n - k];
+    }
+    return dp[n];
+}
 int main()
 {
     int N, K;
     N = 4;
     K = 3;
     int dp[100] = {0};
-    cout << ladder(N, K, dp) << " " << ladder(N, K);
+    cout << ladder(N, K, dp) << " " << ladderO(N, K);
 }

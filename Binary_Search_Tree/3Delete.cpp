@@ -32,13 +32,7 @@ void inorder(node *root)
         inorder(root->right);
     }
 }
-node *inorderSuc(node *root)
-{
-    inorderSuc(root->left);
-    if (!root->left && !root->right)
-        return root;
-    inorderSuc(root->right);
-}
+
 node *getsuccesor(node *root)
 {
     root = root->right;
@@ -70,12 +64,54 @@ node *deleteNode(node *root, int k)
         }
         else
         {
-            node *succ = inorderSuc(root);
+            node *succ = getsuccesor(root);
             root->val = succ->val;
-            root->right = deleteNode(root->right, k);
+            root->right = deleteNode(root->right, succ->val);
         }
     }
     return root;
+}
+node *Floor(node *root, int k)
+{
+    if (root == NULL)
+        return NULL;
+    node *ans = NULL;
+    while (root)
+    {
+        if (k == root->val)
+            return root;
+        if (k < root->val)
+        {
+            root = root->left;
+        }
+        else if (k > root->val)
+        {
+            ans = root;
+            root = root->right;
+        }
+    }
+    return ans;
+}
+node *Ceil(node *root, int k)
+{
+    if (root == NULL)
+        return NULL;
+    node *ans = NULL;
+    while (root)
+    {
+        if (k == root->val)
+            return root;
+        if (k > root->val)
+        {
+            ans = root;
+            root = root->left;
+        }
+        else if (k > root->val)
+        {
+            root = root->right;
+        }
+    }
+    return ans;
 }
 int main()
 {
@@ -89,4 +125,5 @@ int main()
     insert(root, 80);
     deleteNode(root, 20);
     inorder(root);
+    cout << "FLOOR " << Floor(root, 50)->val;
 }

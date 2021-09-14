@@ -26,15 +26,15 @@ void BFS(vector<int> adj[], int v, int s)
     visited[s] = true;
     while (!q.empty())
     {
-        int t = q.front();
+        int v = q.front();
         q.pop();
-        cout << t << " ";
-        for (int v : adj[t])
+        cout << v << " ";
+        for (int u : adj[v])
         {
-            if (!visited[v])
+            if (!visited[u])
             {
-                visited[v] = true;
-                q.push(v);
+                visited[u] = true;
+                q.push(u);
             }
         }
     }

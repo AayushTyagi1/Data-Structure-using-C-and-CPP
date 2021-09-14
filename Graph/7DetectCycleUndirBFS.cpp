@@ -20,24 +20,21 @@ void print(vector<int> adj[], int v)
 int BFS(vector<int> adj[], int v, int s)
 {
     queue<int> q;
-    bool visited[v + 1];
-    for (int i = 0; i < v; i++)
-        visited[i] = false;
+    vector<bool> visited(v, false);
     q.push(s);
     visited[s] = true;
     while (!q.empty())
     {
-        int t = q.front();
+        int v = q.front();
         q.pop();
-        //cout << t << " ";
-        for (int v : adj[t])
+        for (int u : adj[v])
         {
-            if (!visited[v])
+            if (!visited[u])
             {
-                visited[v] = true;
-                q.push(v);
+                visited[u] = true;
+                q.push(u);
             }
-            else if (v > t)
+            else if (u > v)
                 return 1;
         }
     }

@@ -16,32 +16,30 @@ void print(vector<int> adj[], int v)
         cout << endl;
     }
 }
-
-int DFS(vector<int> adj[], int s, vector<bool> &visited, int parent)
+int DFS(vector<int> adj[], vector<bool> &visited, int s, int parent)
 {
     visited[s] = true;
-    for (int i : adj[s])
+    for (int u : adj[s])
     {
-        if (!visited[i])
+        if (!visited[u])
         {
-            if (DFS(adj, i, visited, i))
+            if (DFS(adj, visited, u, s))
                 return 1;
         }
-        else if (i != parent)
-        {
-
+        else if (u != parent)
             return 1;
-        }
     }
     return 0;
 }
 int DFScall(vector<int> adj[], int V, int s)
 {
-    vector<bool> visited(V);
+    vector<bool> visited(V, false);
     for (int i = 0; i < V; i++)
-        visited[i] = false;
-    if (DFS(adj, s, visited, -1))
-        return 1;
+    {
+        if (!visited[i])
+            if (DFS(adj, visited, i, -1))
+                return 1;
+    }
     return 0;
 }
 

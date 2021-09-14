@@ -5,33 +5,31 @@ void addEdge(vector<int> adj[], int u, int v)
 {
     adj[u].push_back(v);
 }
-bool DFSRec(vector<int> adj[], int s, bool visited[], bool recSt[])
+
+bool DFS(vector<int> adj[], int i, vector<bool> &visited, vector<bool> &recst)
 {
-    visited[s] = true;
-    recSt[s] = true;
-    for (auto i : adj[s])
+    visited[i] = true;
+    recst[i] = true;
+    for (auto u : adj[i])
     {
-        if (!visited[i] && DFSRec(adj, i, visited, recSt))
-            return true;
-        else if (recSt[i])
+        if (!visited[u])
+        {
+            if (DFS(adj, u, visited, recst))
+                return true;
+        }
+        else if (recst[u])
             return true;
     }
-    recSt[s] = false;
+    recst[i] = false;
     return false;
 }
 bool DFS(vector<int> adj[], int V)
 {
-    bool visited[V];
-    bool recSt[V];
-    for (int i = 0; i < V; i++)
-    {
-        visited[i] = false;
-        recSt[i] = false;
-    }
+    vector<bool> visited(V, false), recSt(V, false);
     for (int i = 0; i < V; i++)
     {
         if (!visited[i])
-            if (DFSRec(adj, i, visited, recSt))
+            if (DFS(adj, i, visited, recSt))
                 return true;
     }
     return false;

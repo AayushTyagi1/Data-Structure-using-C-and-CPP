@@ -12,15 +12,15 @@ int BFS(vector<int> adj[], int V, int indegree[])
     queue<int> q;
     for (int i = 0; i < V; i++)
     {
-        if (!indegree[i])
+        if (indegree[i] == 0)
             q.push(i);
     }
     while (!q.empty())
     {
         int u = q.front();
-        q.pop();
         cout << u << " ";
-        for (auto i : adj[u])
+        q.pop();
+        for (int i : adj[u])
         {
             indegree[i]--;
             if (indegree[i] == 0)

@@ -7,7 +7,7 @@ bool isSub(string s1, string s2, int m, int n)
         return true;
     if (n == 0)
         return false;
-    if (s1[m] == s2[n])
+    if (s1[m - 1] == s2[n - 1])
         return isSub(s1, s2, m - 1, n - 1);
     return isSub(s1, s2, m, n - 1);
 }
@@ -32,5 +32,5 @@ int main()
         cout << "NO";
 
     cout << endl
-         << isSub(s1, s2, s1.length() - 1, s2.length() - 1);
+         << isSub(s1, s2, s1.length(), s2.length());
 }

@@ -19,7 +19,7 @@ int main()
             if (j == pat.length())
                 ind.push_back(temp);
             j = 0;
-            i = temp + 1;
+            i = temp;
         }
     }
     for (int i = 0; i < ind.size(); i++)

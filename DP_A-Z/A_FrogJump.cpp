@@ -1,25 +1,33 @@
 #include <iostream>
-#include <vector>
-#include <climits>
-#include <cmath>
 using namespace std;
-int solve(vector<int> arr, int n)
+int minCost(int heights[], int n)
 {
-    vector<int> dp(n);
+    int dp[n + 1];
     dp[0] = 0;
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i <= n; i++)
     {
-        dp[i] = min(abs(arr[i] - arr[i - 1]) + dp[i - 1], ((i == 1) ? INT_MAX : abs(arr[i] - arr[i - 2]) + dp[i - 2]));
+        if (i == 1)
+            dp[i] = abs(heights[i] - heights[i - 1]);
+        else
+            dp[i] = min(dp[i - 1] + abs(heights[i] - heights[i - 1]), dp[i - 2] + abs(heights[i] - heights[i - 2]));
     }
-    return dp[n - 1];
+    return dp[n];
 }
 
+/*
+int minCost(int heights[], int n)
+{
+    if (n == 0)
+        return 0;
+    return min(abs(heights[n] - heights[n - 1]) + minCost(heights, n - 1), (n - 2 >= 0) ? (abs(heights[n] - heights[n - 2]) + minCost(heights, n - 2)) : 99999);
+}
+*/
 int main()
 {
     int n;
     cin >> n;
-    vector<int> arr(n);
+    int arr[n];
     for (int i = 0; i < n; i++)
         cin >> arr[i];
-    cout << solve(arr, n);
+    cout << minCost(arr, n - 1);
 }

@@ -1,22 +1,17 @@
 class MyHashMap {
-    unordered_map<int, int> mp;
 public:
+    int data[1000001];
     MyHashMap() {
-        
+        fill(data, data + 1000000, -1);
     }
-    
-    void put(int key, int value) {
-        mp[key]=value;
+    void put(int key, int val) {
+        data[key] = val;
     }
-    
     int get(int key) {
-        if(mp.find(key)!=mp.end())
-            return mp[key];
-        return -1;
+        return data[key];
     }
-    
     void remove(int key) {
-        mp[key]=-1;
+        data[key] = -1;
     }
 };
 

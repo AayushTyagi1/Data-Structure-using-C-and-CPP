@@ -12,25 +12,20 @@
 class Solution {
 public:
     int findBottomLeftValue(TreeNode* root) {
+        //Optimized from Level Order Traversal
         queue<TreeNode *> q;
         q.push(root);
         int ans;
+        TreeNode *p;
         while(!q.empty())
         {
-            int n = q.size();
-            for(int i=0;i<n;i++)
-            {
-                TreeNode *p = q.front();
-                q.pop();
-                if(i==0)
-                   ans = p->val;
-                if(p->left)
-                    q.push(p->left);
-                if(p->right)
-                    q.push(p->right);
-            }
-            
+            p = q.front();
+            q.pop();
+            if(p->right)
+                q.push(p->right);
+            if(p->left)
+                q.push(p->left);
         }
-        return ans;
+        return p->val;
     }
 };

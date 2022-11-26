@@ -5,7 +5,7 @@
 <p>Return <em>the bitwise XOR of all elements of</em> <code>nums</code>.</p>
 
 <p>&nbsp;</p>
-<p><strong>Example 1:</strong></p>
+<p><strong class="example">Example 1:</strong></p>
 
 <pre><strong>Input:</strong> n = 5, start = 0
 <strong>Output:</strong> 8
@@ -13,7 +13,7 @@
 Where "^" corresponds to bitwise XOR operator.
 </pre>
 
-<p><strong>Example 2:</strong></p>
+<p><strong class="example">Example 2:</strong></p>
 
 <pre><strong>Input:</strong> n = 4, start = 3
 <strong>Output:</strong> 8
